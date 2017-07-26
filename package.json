@@ -7,12 +7,13 @@
   "author": "ethanrubio <ethanrubio@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "test": "echo 'no tests",
+    "test": "echo 'no tests'",
     "prettier:base": "yarn run prettier -- --parser typescript --tab-width 4",
     "prettier:check": "yarn run prettier:base -- -l \"./src/**/*.ts\" \"./test/**/*.ts\"",
     "prettier:write": "yarn run prettier:base -- --write \"./src/**/*.ts\" \"./test/**/*.ts\"",
     "precommit": "lint-staged",
     "commitmsg": "validate-commit-msg",
+    "semantic-release-beta": "semantic-release pre && npm publish --tag beta && semantic-release post",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
