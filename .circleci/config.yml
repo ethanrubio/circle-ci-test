@@ -36,6 +36,6 @@ jobs:
 
 deployment:
   production:
-    tag: /.*/
+    tag: /v[0-9]+(\.[0-9]+)*/
     commands:
       - echo "make tags run in 2.0"
