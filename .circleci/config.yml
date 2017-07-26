@@ -35,6 +35,16 @@ jobs:
           path: test-output/
 
       - deploy:
+          name: Maybe publish
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "develop" ]; then
+              yarn run semantic-release-beta
+            fi
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              yarn run semantic-release
+            fi
+
+      - deploy:
           name: Maybe build for deployment
           command: |
             if [ "${CIRCLE_TAG}" != "" ]; then
