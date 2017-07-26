@@ -1,0 +1,36 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: node:8.2-alpine # primary container
+        environment:
+          NODE_ENV: test
+    working_directory: /test
+    steps:
+      - checkout
+
+      - restore_cache:
+          key: yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
+
+      - run:
+          name: Install dependencies
+          command: |
+            yarn
+
+      - run:
+          name: Run tests
+          command: |
+            yarn test
+
+      - save_cache:
+          key: yarn-{{ .Branch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - "~/.yarn-cache"
+
+      - store_artifacts:
+          path: coverage/
+
+      - store_test_results:
+          path: test-output/
+

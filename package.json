@@ -1,0 +1,56 @@
+{
+  "name": "@ethanrubio/circle-ci-test",
+  "version": "0.0.0",
+  "description": "test",
+  "main": "index.js",
+  "repository": "https://github.com/ethanrubio/circle-ci-test.git",
+  "author": "ethanrubio <ethanrubio@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "test": "echo 'no tests",
+    "prettier:base": "yarn run prettier -- --parser typescript --tab-width 4",
+    "prettier:check": "yarn run prettier:base -- -l \"./src/**/*.ts\" \"./test/**/*.ts\"",
+    "prettier:write": "yarn run prettier:base -- --write \"./src/**/*.ts\" \"./test/**/*.ts\"",
+    "precommit": "lint-staged",
+    "commitmsg": "validate-commit-msg"
+  },
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^4.0.2",
+    "prettier": "^1.5.3",
+    "semantic-release": "^6.3.6",
+    "validate-commit-msg": "^2.13.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
+      "scope": {
+        "required": false,
+        "allowed": ["*"],
+        "validate": false,
+        "multiple": false
+      },
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "subject does not match subject pattern!",
+      "helpMessage": "",
+      "autoFix": false
+    }
+  },
+  "lint-staged": {
+    "*.ts": [
+      "prettier --parser typescript --tab-width 4 --write",
+      "git add"
+    ],
+    "*.js": [
+      "prettier --tab-width 4 --write",
+      "git add"
+    ]
+  }
+}
