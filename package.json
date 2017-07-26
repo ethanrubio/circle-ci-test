@@ -17,6 +17,7 @@
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
+    "@headspace/hs-ci-tools": "^1.0.0",
     "commitizen": "^2.9.6",
     "condition-circle": "^1.5.0",
     "cz-conventional-changelog": "^2.0.0",
@@ -71,6 +72,6 @@
     ]
   },
   "release": {
-    "verifyConditions": "condition-circle"
+    "verifyConditions": "@headspace/hs-ci-tools"
   }
 }
