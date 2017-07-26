@@ -34,3 +34,8 @@ jobs:
       - store_test_results:
           path: test-output/
 
+deployment:
+  production:
+    tag: /.*/
+    commands:
+      - echo "make tags run in 2.0"

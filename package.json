@@ -1,6 +1,6 @@
 {
   "name": "@ethanrubio/circle-ci-test",
-  "version": "0.0.0",
+  "version": "0.0.0-development",
   "description": "test",
   "main": "index.js",
   "repository": "https://github.com/ethanrubio/circle-ci-test.git",
@@ -12,7 +12,8 @@
     "prettier:check": "yarn run prettier:base -- -l \"./src/**/*.ts\" \"./test/**/*.ts\"",
     "prettier:write": "yarn run prettier:base -- --write \"./src/**/*.ts\" \"./test/**/*.ts\"",
     "precommit": "lint-staged",
-    "commitmsg": "validate-commit-msg"
+    "commitmsg": "validate-commit-msg",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "devDependencies": {
     "commitizen": "^2.9.6",
@@ -28,10 +29,24 @@
       "path": "cz-conventional-changelog"
     },
     "validate-commit-msg": {
-      "types": ["feat", "fix", "docs", "style", "refactor", "perf", "test", "build", "ci", "chore", "revert"],
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "build",
+        "ci",
+        "chore",
+        "revert"
+      ],
       "scope": {
         "required": false,
-        "allowed": ["*"],
+        "allowed": [
+          "*"
+        ],
         "validate": false,
         "multiple": false
       },
